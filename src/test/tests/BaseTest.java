@@ -30,10 +30,6 @@ public class BaseTest {
         homePage = new HomePage();
         confirmPage = new ConfirmPage();
 
-        /*ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        WebDriver driver = new ChromeDriver(options);
-        setWebDriver(driver);*/
     }
 
     @AfterMethod
