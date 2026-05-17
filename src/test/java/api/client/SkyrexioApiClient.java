@@ -1,5 +1,6 @@
 package api.client;
 
+import api.config.TestConfig;
 import api.dto.CreateSubscriptionRequest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -7,7 +8,6 @@ import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 
 public class SkyrexioApiClient {
-    private static final String BASE_URL = "https://test.skyrexio.com";
     private String authToken;
 
     public SkyrexioApiClient(String authToken) {
@@ -19,8 +19,9 @@ public class SkyrexioApiClient {
 
     private RequestSpecification getBaseSpec() {
         RequestSpecification spec = given()
-                .baseUri(BASE_URL)
-                .header("Content-Type", "application/json");
+                .baseUri(TestConfig.getBaseUrl())
+                .header("Content-Type", "application/json")
+                .log().all();
 
         if (authToken != null) {
             spec.header("Authorization", "Bearer " + authToken);
@@ -35,6 +36,7 @@ public class SkyrexioApiClient {
                 .when()
                 .post("/subscription/createBotFlatSubscription")
                 .then()
+                .log().all()
                 .extract()
                 .response();
     }
