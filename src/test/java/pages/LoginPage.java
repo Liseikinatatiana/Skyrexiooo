@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
@@ -15,11 +16,13 @@ public class LoginPage {
     final SelenideElement pageTitle = $x("//h1[text()='Sign in']");
     final SelenideElement forgotPasswordBtn = $x("//button[text()='Forgot password?']");
 
+    @Step("Открыть страницу login")
     public LoginPage openPageLogin() {
         open("/login");
         return this;
     }
 
+    @Step("Выполнить вход с валидными данными")
     public HomePage login() {
         emailInput.setValue("test@mail.ru").pressEnter();
         passwordInput.sendKeys("password123");
@@ -27,11 +30,13 @@ public class LoginPage {
         return new HomePage();
     }
 
+    @Step("Нажать на кнопку 'Forgot password?'")
     public RecoverPasswordPage forgotPassword() {
         forgotPasswordBtn.click();
         return new RecoverPasswordPage();
     }
 
+    @Step("Выполнить вход с неверным паролем")
     public LoginPage loginWithInvalidPassword() {
         emailInput.setValue("test@mail.ru").pressEnter();
         passwordInput.sendKeys("123");
