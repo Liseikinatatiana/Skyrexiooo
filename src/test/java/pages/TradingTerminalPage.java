@@ -8,7 +8,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class TradingTerminalPage {
+public class TradingTerminalPage extends BasePage{
 
     final SelenideElement buyTab = $x("//button[text()='Buy']");
     final SelenideElement sellTab = $x("//button[text()='Sell']");
@@ -24,7 +24,7 @@ public class TradingTerminalPage {
 
     @Step("Открыть страницу торгового терминала")
     public TradingTerminalPage openTradingTerminal() {
-        Selenide.open("https://test.skyrexio.com/manual-trading/trading-terminal");
+        open("/manual-trading/trading-terminal");
         return this;
     }
 

@@ -11,6 +11,10 @@ import org.testng.annotations.Parameters;
 import pages.*;
 import utils.TestListener;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
 
 @Listeners({AllureTestNg.class, TestListener.class})
@@ -25,12 +29,14 @@ public class BaseTest {
     @Step("Открытие браузера")
     @Parameters({"browser"})
     @BeforeMethod
-    public void setup() {
+    public void setup() throws IOException {
+        Properties props = new Properties();
+        props.load(new FileInputStream("src/config.properties"));
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.headless = false;
         Configuration.timeout = 10000;
-        Configuration.baseUrl = "https://test.skyrexio.com";
+        Configuration.baseUrl = props.getProperty("base.url");
         Configuration.holdBrowserOpen = true;
 
         loginPage = new LoginPage();

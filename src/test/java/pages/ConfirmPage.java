@@ -8,7 +8,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class ConfirmPage {
+public class ConfirmPage extends BasePage{
     final SelenideElement pageTitle = $x("//*[text()='Email confirmation']");
 
     @Step("Проверить, что страница подтверждения email открыта и отображается текст 'Email confirmation'")

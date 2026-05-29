@@ -8,7 +8,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class RecoverPasswordPage {
+public class RecoverPasswordPage extends BasePage{
     final SelenideElement pageTitle = $x("//*[text()='Recover password']");
 
     @Step("Проверить, что страница восстановления пароля открыта и отображается текст 'Recover password'")

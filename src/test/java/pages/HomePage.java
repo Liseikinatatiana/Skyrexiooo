@@ -8,7 +8,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class HomePage {
+public class HomePage extends BasePage{
     final SelenideElement pageTitle = $x("//*[text()='Statistics']");
 
     @Step("Проверить, что домашняя страница открыта и отображается текст 'Statistics'")

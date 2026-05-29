@@ -9,7 +9,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
     final SelenideElement emailInput = $(By.id("email"));
     final SelenideElement passwordInput = $(By.id("password"));
     final SelenideElement signInBtn = $x("//button[text()='Sign in']");
