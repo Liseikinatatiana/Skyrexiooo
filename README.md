@@ -103,6 +103,7 @@ public void loginTest() {
 👤 Обо мне
 
 Имя: Татьяна
+
 Стажировка: Автоматизация тестирования (Java + Selenium + TestNG)
 
 🐙 GitHub: github.com/Liseikinatatiana
