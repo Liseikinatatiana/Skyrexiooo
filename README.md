@@ -1,7 +1,7 @@
-# 📊 Автотесты для торговой платформы (Java + Selenium + TestNG)
+# 📊 Автотесты для торговой платформы (Java + Selenide + TestNG)
 
 Проект по автоматизации тестирования веб-платформы (торговый терминал / криптобиржа).  
-Реализованы UI-тесты, Allure-отчёты, Page Object Model.
+Написан на **Selenide** — современном фреймворке для UI-тестирования с встроенными ожиданиями и лаконичным API.
 
 ---
 
@@ -21,9 +21,8 @@
 | :--- | :--- |
 | **Язык** | Java 17 |
 | **Тестовый фреймворк** | TestNG |
-| **UI-тестирование** | Selenium WebDriver |
+| **UI-тестирование** | Selenide |
 | **API-тестирование** | REST Assured (в папке api) |
-| **Паттерн** | Page Object Model |
 | **Сборка** | Maven |
 | **Отчёты** | Allure |
 | **Система контроля версий** | Git, GitHub |
@@ -66,19 +65,13 @@ cd Skyrexiooo
 mvn clean install
 ```
 
-3. Запустить UI-тесты
+3. Запустить все тесты
 
 ```bash
-mvn clean test -Dtest="*Test"
+mvn clean test
 ```
 
-4. Запустить API-тесты
-
-```bash
-mvn clean test -Dtest="api.tests.*"
-```
-
-5. Открыть Allure-отчёт
+4. Открыть Allure-отчёт
 
 ```bash
 mvn allure:serve
@@ -86,25 +79,32 @@ mvn allure:serve
 
 ---
 
-🧪 Пример UI-теста
+🧪 Пример UI-теста на Selenide
 
 ```java
 @Test
 public void loginTest() {
-    loginPage.open();
-    loginPage.enterEmail("user@mail.com");
-    loginPage.enterPassword("Qwerty123!");
-    loginPage.clickLogin();
-    Assert.assertEquals(tradingTerminalPage.getTitle(), "Dashboard");
+    open("/login");
+    $("#email").setValue("user@mail.com");
+    $("#password").setValue("Qwerty123!");
+    $("[type='submit']").click();
+    $(".dashboard-title").shouldHave(text("Dashboard"));
 }
 ```
 
 ---
+
+🔗 Связанные проекты
+
+· UI-автотесты (Sogaz): github.com/Liseikinatatiana/Sogaz
+· UI-автотесты (Saucedemo): github.com/Liseikinatatiana/Saucedemo
+
+---
+
 👤 Обо мне
 
 Имя: Татьяна
-
-Стажировка: Автоматизация тестирования (Java + Selenium + TestNG)
+Стажировка: Автоматизация тестирования (Java + Selenide + TestNG)
 
 🐙 GitHub: github.com/Liseikinatatiana
 
